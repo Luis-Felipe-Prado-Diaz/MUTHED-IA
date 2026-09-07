@@ -1,0 +1,613 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-primario: #181818;
+	--color-secundario: #303030;
+	--color-terciario: #494949;
+	--color-cuaternario: #616161;
+	--color-quinario: #797979;
+	--color-sexto: #919191;
+	--color-septimo: #AAAAAA;
+	--color-texto-negro: black;
+	--color-texto-blanco: #ffffff;
+
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Audiowide', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+a,
+p,
+li,
+span {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+input,
+label,
+textarea {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+body {
+	background-color: var(--color-primario);
+	color: var(--color-texto-blanco);
+}
+
+
+
+header {}
+
+
+header .menu {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	height: 100vh;
+	background-color: var(--color-septimo);
+	color: var(--color-texto-negro);
+	width: 250px;
+	transition: width 0.3s ease-in-out;
+	gap: 5rem;
+	position: fixed;
+}
+
+header .menu.active {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 100vh;
+	background-color: var(--color-septimo);
+	color: var(--color-texto-negro);
+	gap: 1rem;
+	position: fixed;
+	left: 0%;
+	top: 0;
+	width: 80px;
+	transition: width 0.3s ease-in-out;
+	z-index: 1000;
+	padding: 0.5rem;
+}
+
+header .menu.active .Principal-menu ul {
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	list-style: none;
+	gap: 0.5em;
+	background-color: var(--color-quinario);
+	padding: 1rem;
+	border-radius: 5px;
+	width: max-content;
+
+}
+
+header .menu .Principal-menu ul {
+	display: flex;
+	list-style: none;
+	width: 250px;
+	justify-content: space-evenly;
+	gap: 2.5rem;
+	background-color: var(--color-quinario);
+	padding: 1.5rem;
+}
+
+header .menu.active .Principal-menu ul li a,
+header .menu.active .Principal-menu ul li svg {
+	color: var(--color-texto-negro);
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-decoration: none;
+	fill: var(--color-texto-negro);
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+
+}
+
+header .menu .Principal-menu ul li a,
+header .menu .Principal-menu ul li svg {
+	color: var(--color-texto-negro);
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-decoration: none;
+	fill: var(--color-texto-negro);
+	width: 2rem;
+	height: 2rem;
+}
+
+header .menu .Principal-menu ul li a:hover,
+header .menu .Principal-menu ul li svg:hover {
+	color: var(--color-texto-blanco);
+	fill: var(--color-texto-blanco);
+}
+
+header .menu .Principal-menu ul:nth-child(2) {
+	padding: 1rem;
+	width: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+header .menu  ul {
+	list-style: none;
+}
+
+
+header .menu.active .Principal-menu ul:nth-child(2) {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 73px;
+}
+
+header .menu.active .Principal-menu ul:nth-child(2) li a button {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 0.8rem;
+	font-weight: 700;
+	padding: 0;
+	border-radius: 0;
+	font-family: 'Audiowide', sans-serif;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	width: 100%;
+}
+
+header .menu .Principal-menu ul:nth-child(2) li a button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem 0.5rem;
+	font-size: 1rem;
+	font-weight: 700;
+	font-family: 'Audiowide', sans-serif;
+	border-radius: 5px;
+	background-color: transparent;
+	width: 230px;
+}
+
+header .menu .Principal-menu ul:nth-child(2) li a button:hover {
+	background-color: var(--color-quinario);
+}
+
+header .menu.active .Principal-menu ul:nth-child(2) li a button:hover {
+	background-color: var(--color-quinario);
+}
+
+header .menu.active .Principal-menu ul:nth-child(2) li a button svg {
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: var(--color-texto-negro);
+}
+
+
+
+header .menu .secundary-menu {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.5rem;
+	border-top: 1px solid var(--color-quinario);
+	border-bottom: 1px solid var(--color-quinario);
+	transition: width 0.3s ease-in-out;
+}
+
+header .menu .secundary-menu h3 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding: 1.5rem;
+
+}
+
+header .menu.active .secundary-menu h3 {
+	visibility: hidden;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+header .menu.active .secundary-menu h3,
+header .menu.active .secundary-menu ul,
+header .menu.active .user .name-user {
+	display: none;
+	transition: width 0.3s ease-in-out;
+	/* Esto elimina el texto por completo para que la caja pueda encogerse */
+}
+
+header .menu .secundary-menu ul {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 1rem;
+	overflow: hidden;
+	padding: 1rem;
+	list-style: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 200px;
+	height: 300px;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-quinario) var(--color-septimo);
+	transition: width 0.3s ease-in-out;
+}
+
+header .menu.active .secundary-menu ul {
+	align-items: center;
+	padding: 1rem;
+	list-style: none;
+	visibility: hidden;
+	transition: width 0.3s ease-in-out;
+
+
+}
+
+header .menu .secundary-menu ul li a {
+	color: var(--color-texto-negro);
+	font-size: 1rem;
+	font-weight: 400;
+	text-decoration: none;
+	border-radius: 5px;
+	padding: 0.5rem;
+	transition: width 0.3s ease-in-out;
+}
+
+header .menu .secundary-menu ul li a:hover {
+	background-color: var(--color-quinario);
+}
+
+
+header .menu .user {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	background-color: var(--color-quinario);
+	width: 250px;
+}
+
+header .menu .user .imagen-user {
+	width: 3rem;
+	height: 3rem;
+	fill: var(--color-texto-negro);
+	border-radius: 5px;
+}
+
+header .menu.active .user {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	padding: 0.2rem;
+	width: max-content;
+	background-color: transparent;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+header .menu.active .user .name-user {
+	visibility: hidden;
+	overflow: hidden;
+	height: 0;
+}
+
+header .menu .user .imagen-user svg {
+	width: 2.5rem;
+	height: 2.5rem;
+	fill: var(--color-texto-negro);
+	border-radius: 5px;
+	padding: 0.25rem;
+	background-color: var(--color-septimo);
+}
+
+header .menu.active .user .imagen-user svg {
+	width: 3rem;
+	height: 3rem;
+	fill: var(--color-texto-negro);
+	border-radius: 5px;
+	background-color: var(--color-quinario);
+	padding: 0.5rem;
+
+}
+
+/* Estado normal: El menú está abierto y ocupa 250px */
+main {
+	margin-left: 250px;
+	padding: 2rem;
+	/* Espaciado interno para que no quede pegado a los bordes */
+	transition: margin-left 0.3s ease;
+	/* La animación para empujar el contenido */
+}
+
+/* Estado activo: Si el header tiene la clase .menuactive, el menú mide 80px */
+body:has(header .menu.active) main {
+	margin-left: 80px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	min-height: 100vh;
+
+}
+
+main .texto {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+
+}
+
+main .texto .titulo h1 {
+	font-size: 10rem;
+	color: var(--color-quinario);
+	text-shadow: 2px 2px 3px #08024e;
+	line-height: 6.3rem;
+}
+
+main .texto .subtitulo p {
+	font-size: 3rem;
+	color: var(--color-sexto);
+}
+
+main .caja-de-busqueda {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	max-width: 100%;
+	width: 100%;
+
+}
+
+main .caja-de-busqueda .label-container label {
+	font-size: 2rem;
+	font-weight: 400;
+	color: var(--color-texto-blancO);
+	text-align: start;
+	width: 100%;
+}
+
+main .caja-de-busqueda .input-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 1rem;
+	background-color: var(--color-septimo);
+	border-radius: 5px;
+	width: 100%;
+}
+
+main .caja-de-busqueda .input-container svg {
+	fill: var(--color-texto-negro);
+	width: 3rem;
+	height: 3rem;
+	background-color: var(--color-quinario);
+	padding: 0.5rem;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+main .caja-de-busqueda .input-container textarea {
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--color-texto-negro);
+	cursor: pointer;
+	outline: none;
+	padding: 0.5rem;
+	border-radius: 5px;
+	width: 100%;
+
+}
+
+
+@media (max-width: 768px) {
+	main .texto .titulo h1 {
+		font-size: 3.5rem;
+		line-height: 4rem;
+	}
+
+	main .texto .subtitulo p {
+		font-size: 1.5rem;
+	}
+
+	main .caja-de-busqueda .label-container label {
+		font-size: 1.2rem;
+		text-align: center;
+	}
+
+	main .caja-de-busqueda {
+		padding: 0.5rem 0;
+	}
+
+	main .caja-de-busqueda .input-container {
+		padding: 0.5rem;
+		gap: 0.5rem;
+	}
+
+	main .caja-de-busqueda .input-container svg {
+		width: 2rem;
+		height: 2rem;
+		padding: 0.3rem;
+	}
+
+	header .menu {
+		width: 100%;
+		height: 70px;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		top: 0;
+		left: 0;
+		padding: 0 1rem;
+		transform: none;
+		border-bottom: 1px solid var(--color-quinario);
+		overflow: hidden;
+		gap: 3rem;
+	}
+
+	header .menu .Principal-menu ul {
+		flex-direction: row;
+		padding: 0;
+		background-color: transparent;
+		gap: 1.5rem;
+	}
+
+	header .menu .Principal-menu ul:last-child {
+		width: auto;
+		padding: 0;
+		display: none;
+	}
+
+	header .menu .Principal-menu ul li a button {
+		width: 45px;
+		height: 45px;
+		padding: 0;
+		justify-content: center;
+	}
+
+	header .menu .Principal-menu ul:last-child li a button span,
+	header .menu .user .name-user {
+		display: none;
+	}
+
+	header .menu .secundary-menu {
+		display: none;
+	}
+
+	header .menu .user {
+		width: auto;
+		padding: 0;
+		background-color: transparent;
+	}
+
+	header .menu.active {
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100vh;
+
+	transform: none;
+
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+
+	padding-top: 1rem;
+
+	overflow-y: auto;
+}
+
+	header .menu.active .Principal-menu ul {
+		flex-direction: row;
+		display: flex;
+		gap: 2rem;
+		width: 100%;
+		justify-content: center;
+	}
+
+	header .menu.active .Principal-menu ul:last-child {
+		width: 100%;
+		padding: 1rem;
+	}
+
+	header .menu.active .Principal-menu ul:last-child li a button {
+		width: 100%;
+		max-width: 300px;
+		flex-direction: row;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	header .menu.active .Principal-menu ul:last-child li a button span,
+	header .menu.active .user .name-user {
+		display: flex;
+	}
+
+	header .menu.active .secundary-menu {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		border-bottom: none;
+	}
+
+	header .menu.active .secundary-menu h3,
+	header .menu.active .secundary-menu ul,
+	header .menu.active .user .name-user {
+		visibility: visible;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+
+	}
+
+	header .menu.active .secundary-menu ul {
+		height: auto;
+		max-height: 40vh;
+	}
+
+	header .menu.active .user {
+		width: 100%;
+		flex-direction: column;
+		margin-top: auto;
+		padding: 1rem;
+	}
+
+	main {
+		margin-left: 0;
+		margin-top: 70px;
+		padding: 1rem;
+		min-height: calc(100vh - 70px);
+	}
+
+	body:has(header .menu.active) main {
+		margin-left: 0;
+		display: none;
+	}
+}
