@@ -1,46 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#181818">
+	<meta name="description" content="MUTHED, un chat de inteligencia artificial minimalista construido con HTML, CSS y JavaScript.">
+	<title>MUTHED · Chat IA</title>
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-	<script type="module" src="./javascript/java.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
 	<link rel="stylesheet" href="styles/styles.css">
-	<title>Document</title>
+	<script type="module" src="./javascript/java.js"></script>
 </head>
 
 <body>
 	<header>
 		<div class="menu">
-			<nav class="Principal-menu">
+			<nav class="Principal-menu" aria-label="Menú principal">
 				<ul>
 					<li><a href="#">MD</a></li>
-					<li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<title>magnify</title>
-							<path
-								d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
-						</svg></li>
-					<li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<title>menu</title>
-							<path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-						</svg></li>
+					<li>
+						<button type="button" aria-label="Buscar">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+								<path
+									d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+							</svg>
+						</button>
+					</li>
+					<li>
+						<button type="button" id="menu-toggle" aria-label="Abrir o cerrar menú">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+								<path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+							</svg>
+						</button>
+					</li>
 				</ul>
 
 				<ul>
-					<li><a href=""><button>Nuevo<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-									<title>plus</title>
-									<path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-								</svg></button></a></li>
+					<li>
+						<button type="button">
+							Nuevo
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+								<path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+							</svg>
+						</button>
+					</li>
 				</ul>
-
 			</nav>
-			<nav class="secundary-menu">
+
+			<nav class="secundary-menu" aria-label="Historial de chats">
 				<h3>Chats Recientes</h3>
 				<ul>
 					<li><a href="#">Como funciona este codigo css</a></li>
@@ -56,13 +67,12 @@
 					<li><a href="#">valorar este ordenador</a></li>
 					<li><a href="#">valorar este ordenador</a></li>
 					<li><a href="#">valorar este ordenador</a></li>
-
 				</ul>
 			</nav>
+
 			<div class="user">
 				<div class="imagen-user">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<title>account</title>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 						<path
 							d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
 					</svg>
@@ -74,8 +84,8 @@
 			</div>
 		</div>
 	</header>
-	<main>
 
+	<main>
 		<div class="texto">
 			<div class="titulo">
 				<h1>MUTHED</h1>
@@ -84,25 +94,25 @@
 				<p>Chat IA</p>
 			</div>
 		</div>
+
 		<div class="caja-de-busqueda">
 			<div class="label-container">
-				<label for="input">Bienvenido, ¿en qué puedo ayudarte?</label>
+				<label for="busquda">Bienvenido, ¿en qué puedo ayudarte?</label>
 			</div>
 			<div class="input-container">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-					<title>paperclip</title>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 					<path
 						d="M16.5,6V17.5A4,4 0 0,1 12.5,21.5A4,4 0 0,1 8.5,17.5V5A2.5,2.5 0 0,1 11,2.5A2.5,2.5 0 0,1 13.5,5V15.5A1,1 0 0,1 12.5,16.5A1,1 0 0,1 11.5,15.5V6H10V15.5A2.5,2.5 0 0,0 12.5,18A2.5,2.5 0 0,0 15,15.5V5A4,4 0 0,0 11,1A4,4 0 0,0 7,5V17.5A5.5,5.5 0 0,0 12.5,23A5.5,5.5 0 0,0 18,17.5V6H16.5Z" />
 				</svg>
 				<textarea id="busquda" placeholder="Pregunta lo que quieras" rows="1"></textarea>
-				
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-up-bold-circle</title><path d="M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22M12,7L7,12H10V16H14V12H17L12,7Z" /></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-action="enviar" aria-hidden="true" focusable="false">
+					<path d="M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22M12,7L7,12H10V16H14V12H17L12,7Z" />
+				</svg>
 			</div>
 		</div>
 	</main>
-	<footer>
 
-	</footer>
+	<footer></footer>
 </body>
 
 </html>
