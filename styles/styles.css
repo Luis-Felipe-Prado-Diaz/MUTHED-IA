@@ -221,7 +221,7 @@ header .menu .secundary-menu {
 	gap: 0.5rem;
 	border-top: 1px solid var(--color-quinario);
 	border-bottom: 1px solid var(--color-quinario);
-	transition: width 0.3s ease-in-out;
+	transition: width 0.8s ease-in-out;
 }
 
 header .menu .secundary-menu h3 {
@@ -241,7 +241,7 @@ header .menu.active .secundary-menu h3,
 header .menu.active .secundary-menu ul,
 header .menu.active .user .name-user {
 	display: none;
-	transition: width 0.3s ease-in-out;
+	transition: width 0.8s ease-in-out;
 	/* Esto elimina el texto por completo para que la caja pueda encogerse */
 }
 
@@ -261,7 +261,7 @@ header .menu .secundary-menu ul {
 	overflow-y: auto;
 	scrollbar-width: thin;
 	scrollbar-color: var(--color-quinario) var(--color-septimo);
-	transition: width 0.3s ease-in-out;
+	transition: width 0.8s ease-in-out;
 }
 
 header .menu.active .secundary-menu ul {
