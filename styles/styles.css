@@ -5,6 +5,7 @@
 }
 
 :root {
+	/* Colores originales del proyecto — no se renombran ni se añaden tonos nuevos */
 	--color-primario: #181818;
 	--color-secundario: #303030;
 	--color-terciario: #494949;
@@ -15,14 +16,30 @@
 	--color-texto-negro: black;
 	--color-texto-blanco: #ffffff;
 
+	/* Tokens de apoyo: solo medidas y tiempos reutilizables, no son colores nuevos */
+	--sidebar-width: 250px;
+	--sidebar-width-collapsed: 80px;
+	--radius-sm: 5px;
+	--radius-md: 10px;
+	--radius-pill: 999px;
+	--transition-fast: 0.2s ease;
+	--transition-base: 0.3s ease-in-out;
+	--shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.35);
+	--shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+html {
+	scroll-behavior: smooth;
 }
 
 a {
 	text-decoration: none;
+	color: inherit;
 }
 
 button {
 	cursor: pointer;
+	font: inherit;
 }
 
 h1,
@@ -56,12 +73,22 @@ textarea {
 body {
 	background-color: var(--color-primario);
 	color: var(--color-texto-blanco);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Accesibilidad: foco visible y consistente en toda la app al navegar con teclado */
+a:focus-visible,
+button:focus-visible,
+textarea:focus-visible {
+	outline: 2px solid var(--color-septimo);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
 
-
-header {}
-
+/* ==========================================================================
+   SIDEBAR — Contenedor principal
+   ========================================================================== */
 
 header .menu {
 	display: flex;
@@ -69,12 +96,17 @@ header .menu {
 	align-items: flex-start;
 	justify-content: space-between;
 	height: 100vh;
-	background-color: var(--color-septimo);
-	color: var(--color-texto-negro);
-	width: 250px;
-	transition: width 0.3s ease-in-out;
+	background-color: var(--color-secundario);
+	color: var(--color-texto-blanco);
+	width: var(--sidebar-width);
+	transition: width var(--transition-base);
 	gap: 5rem;
 	position: fixed;
+	top: 0;
+	left: 0;
+	border-right: 1px solid var(--color-terciario);
+	box-shadow: var(--shadow-sidebar);
+	z-index: 1000;
 }
 
 header .menu.active {
@@ -83,16 +115,36 @@ header .menu.active {
 	align-items: center;
 	justify-content: space-between;
 	height: 100vh;
-	background-color: var(--color-septimo);
-	color: var(--color-texto-negro);
+	background-color: var(--color-secundario);
+	color: var(--color-texto-blanco);
 	gap: 1rem;
 	position: fixed;
-	left: 0%;
+	left: 0;
 	top: 0;
-	width: 80px;
-	transition: width 0.3s ease-in-out;
+	width: var(--sidebar-width-collapsed);
+	transition: width var(--transition-base);
 	z-index: 1000;
 	padding: 0.5rem;
+	border-right: 1px solid var(--color-terciario);
+	box-shadow: var(--shadow-sidebar);
+}
+
+header .menu ul {
+	list-style: none;
+}
+
+/* ==========================================================================
+   SIDEBAR — Menú de iconos superior (logo, buscar, hamburguesa, "Nuevo")
+   ========================================================================== */
+
+header .menu .Principal-menu ul {
+	display: flex;
+	list-style: none;
+	width: var(--sidebar-width);
+	justify-content: space-evenly;
+	gap: 2.5rem;
+	background-color: var(--color-terciario);
+	padding: 1.5rem;
 }
 
 header .menu.active .Principal-menu ul {
@@ -101,65 +153,72 @@ header .menu.active .Principal-menu ul {
 	align-items: center;
 	list-style: none;
 	gap: 0.5em;
-	background-color: var(--color-quinario);
+	background-color: var(--color-terciario);
 	padding: 1rem;
-	border-radius: 5px;
+	border-radius: var(--radius-sm);
 	width: max-content;
-
-}
-
-header .menu .Principal-menu ul {
-	display: flex;
-	list-style: none;
-	width: 250px;
-	justify-content: space-evenly;
-	gap: 2.5rem;
-	background-color: var(--color-quinario);
-	padding: 1.5rem;
-}
-
-header .menu.active .Principal-menu ul li a,
-header .menu.active .Principal-menu ul li svg {
-	color: var(--color-texto-negro);
-	font-size: 1.5rem;
-	font-weight: 700;
-	text-decoration: none;
-	fill: var(--color-texto-negro);
-	width: 2rem;
-	height: 2rem;
-	cursor: pointer;
-
 }
 
 header .menu .Principal-menu ul li a,
-header .menu .Principal-menu ul li svg {
-	color: var(--color-texto-negro);
+header .menu .Principal-menu ul li button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: none;
+	padding: 0.4rem;
+	color: var(--color-texto-blanco);
 	font-size: 1.5rem;
 	font-weight: 700;
 	text-decoration: none;
-	fill: var(--color-texto-negro);
+	cursor: pointer;
+	border-radius: var(--radius-sm);
+	transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+header .menu .Principal-menu ul li svg {
+	fill: var(--color-texto-blanco);
+	width: 2rem;
+	height: 2rem;
+	pointer-events: none;
+	transition: fill var(--transition-fast);
+}
+
+header .menu .Principal-menu ul li a:hover,
+header .menu .Principal-menu ul li button:hover {
+	color: var(--color-septimo);
+	transform: translateY(-2px);
+}
+
+header .menu .Principal-menu ul li a:hover svg,
+header .menu .Principal-menu ul li button:hover svg {
+	fill: var(--color-septimo);
+}
+
+header .menu.active .Principal-menu ul li a,
+header .menu.active .Principal-menu ul li button {
+	color: var(--color-texto-blanco);
+	font-size: 1.5rem;
+	font-weight: 700;
 	width: 2rem;
 	height: 2rem;
 }
 
-header .menu .Principal-menu ul li a:hover,
-header .menu .Principal-menu ul li svg:hover {
-	color: var(--color-texto-blanco);
+header .menu.active .Principal-menu ul li a svg,
+header .menu.active .Principal-menu ul li button svg {
 	fill: var(--color-texto-blanco);
+	width: 2rem;
+	height: 2rem;
 }
 
 header .menu .Principal-menu ul:nth-child(2) {
 	padding: 1rem;
-	width: 250px;
+	width: var(--sidebar-width);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: transparent;
 }
-
-header .menu  ul {
-	list-style: none;
-}
-
 
 header .menu.active .Principal-menu ul:nth-child(2) {
 	display: flex;
@@ -167,17 +226,48 @@ header .menu.active .Principal-menu ul:nth-child(2) {
 	align-items: center;
 	justify-content: center;
 	width: 73px;
+	background-color: transparent;
 }
 
-header .menu.active .Principal-menu ul:nth-child(2) li a button {
+/* Botón "Nuevo chat": lo tratamos como acción primaria del sidebar */
+header .menu .Principal-menu ul:nth-child(2) li button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	padding: 0.6rem 1rem;
+	font-size: 1rem;
+	font-weight: 700;
+	font-family: 'Audiowide', sans-serif;
+	border-radius: var(--radius-pill);
+	border: 1px solid var(--color-cuaternario);
+	background-color: transparent;
+	color: var(--color-texto-blanco);
+	width: 230px;
+	transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+header .menu .Principal-menu ul:nth-child(2) li button svg {
+	width: 1.25rem;
+	height: 1.25rem;
+	fill: var(--color-texto-blanco);
+	pointer-events: none;
+}
+
+header .menu .Principal-menu ul:nth-child(2) li button:hover {
+	background-color: var(--color-cuaternario);
+	border-color: var(--color-septimo);
+}
+
+header .menu.active .Principal-menu ul:nth-child(2) li button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	font-size: 0.8rem;
 	font-weight: 700;
-	padding: 0;
-	border-radius: 0;
+	padding: 0.5rem;
+	border-radius: var(--radius-sm);
 	font-family: 'Audiowide', sans-serif;
 	border: none;
 	background-color: transparent;
@@ -185,63 +275,55 @@ header .menu.active .Principal-menu ul:nth-child(2) li a button {
 	width: 100%;
 }
 
-header .menu .Principal-menu ul:nth-child(2) li a button {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0.5rem 0.5rem;
-	font-size: 1rem;
-	font-weight: 700;
-	font-family: 'Audiowide', sans-serif;
-	border-radius: 5px;
-	background-color: transparent;
-	width: 230px;
+header .menu.active .Principal-menu ul:nth-child(2) li button:hover {
+	background-color: var(--color-cuaternario);
 }
 
-header .menu .Principal-menu ul:nth-child(2) li a button:hover {
-	background-color: var(--color-quinario);
-}
-
-header .menu.active .Principal-menu ul:nth-child(2) li a button:hover {
-	background-color: var(--color-quinario);
-}
-
-header .menu.active .Principal-menu ul:nth-child(2) li a button svg {
+header .menu.active .Principal-menu ul:nth-child(2) li button svg {
 	width: 1.5rem;
 	height: 1.5rem;
-	fill: var(--color-texto-negro);
+	fill: var(--color-texto-blanco);
 }
 
-
+/* ==========================================================================
+   SIDEBAR — Historial de chats
+   ========================================================================== */
 
 header .menu .secundary-menu {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.5rem;
+<<<<<<< HEAD
 	border-top: 1px solid var(--color-quinario);
 	border-bottom: 1px solid var(--color-quinario);
 	transition: width 0.8s ease-in-out;
+=======
+	border-top: 1px solid var(--color-terciario);
+	border-bottom: 1px solid var(--color-terciario);
+	transition: width var(--transition-base);
+>>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 }
 
 header .menu .secundary-menu h3 {
-	font-size: 1.5rem;
-	font-weight: 700;
-	padding: 1.5rem;
-
-}
-
-header .menu.active .secundary-menu h3 {
-	visibility: hidden;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	font-family: "Poppins", sans-serif;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-sexto);
+	padding: 1.5rem 1.5rem 0.5rem;
 }
 
 header .menu.active .secundary-menu h3,
 header .menu.active .secundary-menu ul,
 header .menu.active .user .name-user {
 	display: none;
+<<<<<<< HEAD
 	transition: width 0.8s ease-in-out;
+=======
+	transition: width var(--transition-base);
+>>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 	/* Esto elimina el texto por completo para que la caja pueda encogerse */
 }
 
@@ -250,18 +332,30 @@ header .menu .secundary-menu ul {
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
-	gap: 1rem;
+	gap: 0.35rem;
 	overflow: hidden;
-	padding: 1rem;
+	padding: 0.5rem 1rem 1rem;
 	list-style: none;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 	width: 200px;
 	height: 300px;
 	overflow-y: auto;
 	scrollbar-width: thin;
+<<<<<<< HEAD
 	scrollbar-color: var(--color-quinario) var(--color-septimo);
 	transition: width 0.8s ease-in-out;
+=======
+	scrollbar-color: var(--color-cuaternario) transparent;
+	transition: width var(--transition-base);
+}
+
+header .menu .secundary-menu ul::-webkit-scrollbar {
+	width: 6px;
+}
+
+header .menu .secundary-menu ul::-webkit-scrollbar-thumb {
+	background-color: var(--color-cuaternario);
+	border-radius: var(--radius-pill);
+>>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 }
 
 header .menu.active .secundary-menu ul {
@@ -269,25 +363,32 @@ header .menu.active .secundary-menu ul {
 	padding: 1rem;
 	list-style: none;
 	visibility: hidden;
-	transition: width 0.3s ease-in-out;
-
-
+	transition: width var(--transition-base);
 }
 
 header .menu .secundary-menu ul li a {
-	color: var(--color-texto-negro);
-	font-size: 1rem;
+	display: block;
+	color: var(--color-texto-blanco);
+	font-size: 0.9rem;
 	font-weight: 400;
 	text-decoration: none;
-	border-radius: 5px;
-	padding: 0.5rem;
-	transition: width 0.3s ease-in-out;
+	border-radius: var(--radius-sm);
+	padding: 0.6rem 0.75rem;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	transition: background-color var(--transition-fast), padding-left var(--transition-fast);
 }
 
 header .menu .secundary-menu ul li a:hover {
-	background-color: var(--color-quinario);
+	background-color: var(--color-terciario);
+	padding-left: 1rem;
 }
 
+/* ==========================================================================
+   SIDEBAR — Usuario
+   ========================================================================== */
 
 header .menu .user {
 	display: flex;
@@ -295,15 +396,34 @@ header .menu .user {
 	justify-content: space-between;
 	gap: 1rem;
 	padding: 1rem;
-	background-color: var(--color-quinario);
-	width: 250px;
+	background-color: var(--color-terciario);
+	width: var(--sidebar-width);
 }
 
 header .menu .user .imagen-user {
 	width: 3rem;
 	height: 3rem;
 	fill: var(--color-texto-negro);
-	border-radius: 5px;
+	border-radius: var(--radius-sm);
+}
+
+header .menu .user .imagen-user svg {
+	width: 2.5rem;
+	height: 2.5rem;
+	fill: var(--color-texto-negro);
+	border-radius: var(--radius-sm);
+	padding: 0.25rem;
+	background-color: var(--color-septimo);
+}
+
+header .menu .user .name-user h3 {
+	font-size: 1rem;
+	color: var(--color-texto-blanco);
+}
+
+header .menu .user .name-user p {
+	font-size: 0.8rem;
+	color: var(--color-sexto);
 }
 
 header .menu.active .user {
@@ -315,7 +435,7 @@ header .menu.active .user {
 	padding: 0.2rem;
 	width: max-content;
 	background-color: transparent;
-	border-radius: 5px;
+	border-radius: var(--radius-sm);
 	overflow: hidden;
 }
 
@@ -325,48 +445,38 @@ header .menu.active .user .name-user {
 	height: 0;
 }
 
-header .menu .user .imagen-user svg {
-	width: 2.5rem;
-	height: 2.5rem;
-	fill: var(--color-texto-negro);
-	border-radius: 5px;
-	padding: 0.25rem;
-	background-color: var(--color-septimo);
-}
-
 header .menu.active .user .imagen-user svg {
 	width: 3rem;
 	height: 3rem;
 	fill: var(--color-texto-negro);
-	border-radius: 5px;
-	background-color: var(--color-quinario);
+	border-radius: var(--radius-sm);
+	background-color: var(--color-septimo);
 	padding: 0.5rem;
-
 }
 
-/* Estado normal: El menú está abierto y ocupa 250px */
+/* ==========================================================================
+   CONTENIDO PRINCIPAL
+   ========================================================================== */
+
 main {
-	margin-left: 250px;
+	margin-left: var(--sidebar-width);
 	padding: 2rem;
-	/* Espaciado interno para que no quede pegado a los bordes */
-	transition: margin-left 0.3s ease;
-	/* La animación para empujar el contenido */
-}
-
-/* Estado activo: Si el header tiene la clase .menuactive, el menú mide 80px */
-body:has(header .menu.active) main {
-	margin-left: 80px;
-}
-
-main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
 	min-height: 100vh;
-
+	transition: margin-left var(--transition-base);
 }
+
+body:has(header .menu.active) main {
+	margin-left: var(--sidebar-width-collapsed);
+}
+
+/* ==========================================================================
+   HERO — Título y subtítulo
+   ========================================================================== */
 
 main .texto {
 	display: flex;
@@ -374,20 +484,24 @@ main .texto {
 	align-items: center;
 	justify-content: center;
 	gap: 0.5rem;
-
 }
 
 main .texto .titulo h1 {
-	font-size: 10rem;
-	color: var(--color-quinario);
-	text-shadow: 2px 2px 3px #08024e;
-	line-height: 6.3rem;
+	font-size: clamp(2.75rem, 5vw + 1rem, 7rem);
+	line-height: 1.1;
+	color: var(--color-texto-blanco);
+	letter-spacing: 0.03em;
+	text-shadow: var(--shadow-soft);
 }
 
 main .texto .subtitulo p {
-	font-size: 3rem;
-	color: var(--color-sexto);
+	font-size: clamp(1.25rem, 1.5vw + 0.75rem, 2rem);
+	color: var(--color-quinario);
 }
+
+/* ==========================================================================
+   CAJA DE BÚSQUEDA
+   ========================================================================== */
 
 main .caja-de-busqueda {
 	display: flex;
@@ -396,15 +510,14 @@ main .caja-de-busqueda {
 	justify-content: space-between;
 	gap: 1rem;
 	padding: 1rem;
-	max-width: 100%;
+	max-width: 720px;
 	width: 100%;
-
 }
 
 main .caja-de-busqueda .label-container label {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: 400;
-	color: var(--color-texto-blancO);
+	color: var(--color-texto-blanco);
 	text-align: start;
 	width: 100%;
 }
@@ -415,38 +528,82 @@ main .caja-de-busqueda .input-container {
 	justify-content: center;
 	gap: 1rem;
 	padding: 1rem;
-	background-color: var(--color-septimo);
-	border-radius: 5px;
+	background-color: var(--color-terciario);
+	border: 1px solid var(--color-cuaternario);
+	border-radius: var(--radius-md);
 	width: 100%;
+	transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+main .caja-de-busqueda .input-container:focus-within {
+	border-color: var(--color-septimo);
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
 main .caja-de-busqueda .input-container svg {
-	fill: var(--color-texto-negro);
-	width: 3rem;
-	height: 3rem;
+	fill: var(--color-texto-blanco);
+	width: 2.75rem;
+	height: 2.75rem;
 	background-color: var(--color-quinario);
-	padding: 0.5rem;
-	border-radius: 5px;
+	padding: 0.6rem;
+	border-radius: var(--radius-sm);
 	cursor: pointer;
+	flex-shrink: 0;
+	transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+main .caja-de-busqueda .input-container svg:hover {
+	background-color: var(--color-cuaternario);
+	transform: scale(1.05);
+}
+
+/* El icono de enviar se distingue como acción principal, reutilizando el gris más claro de la paleta */
+main .caja-de-busqueda .input-container svg[data-action="enviar"] {
+	background-color: var(--color-septimo);
+	fill: var(--color-texto-negro);
+}
+
+main .caja-de-busqueda .input-container svg[data-action="enviar"]:hover {
+	background-color: var(--color-sexto);
 }
 
 main .caja-de-busqueda .input-container textarea {
 	font-size: 1rem;
 	font-weight: 400;
-	color: var(--color-texto-negro);
-	cursor: pointer;
+	color: var(--color-texto-blanco);
+	background: transparent;
+	cursor: text;
 	outline: none;
+	border: none;
+	resize: none;
 	padding: 0.5rem;
-	border-radius: 5px;
 	width: 100%;
-
+	max-height: 200px;
 }
 
+main .caja-de-busqueda .input-container textarea::placeholder {
+	color: var(--color-sexto);
+}
+
+/* ==========================================================================
+   ACCESIBILIDAD — Respeta la preferencia de reducir animaciones
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ==========================================================================
+   RESPONSIVE — Mobile
+   ========================================================================== */
 
 @media (max-width: 768px) {
 	main .texto .titulo h1 {
 		font-size: 3.5rem;
-		line-height: 4rem;
+		line-height: 1.1;
 	}
 
 	main .texto .subtitulo p {
@@ -483,7 +640,8 @@ main .caja-de-busqueda .input-container textarea {
 		left: 0;
 		padding: 0 1rem;
 		transform: none;
-		border-bottom: 1px solid var(--color-quinario);
+		border-right: none;
+		border-bottom: 1px solid var(--color-terciario);
 		overflow: hidden;
 		gap: 3rem;
 	}
@@ -501,14 +659,13 @@ main .caja-de-busqueda .input-container textarea {
 		display: none;
 	}
 
-	header .menu .Principal-menu ul li a button {
+	header .menu .Principal-menu ul li button {
 		width: 45px;
 		height: 45px;
 		padding: 0;
 		justify-content: center;
 	}
 
-	header .menu .Principal-menu ul:last-child li a button span,
 	header .menu .user .name-user {
 		display: none;
 	}
@@ -524,23 +681,18 @@ main .caja-de-busqueda .input-container textarea {
 	}
 
 	header .menu.active {
-	position: fixed;
-	top: 0;
-	left: 0;
-
-	width: 100%;
-	height: 100vh;
-
-	transform: none;
-
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-
-	padding-top: 1rem;
-
-	overflow-y: auto;
-}
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		transform: none;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		padding-top: 1rem;
+		overflow-y: auto;
+	}
 
 	header .menu.active .Principal-menu ul {
 		flex-direction: row;
@@ -555,7 +707,7 @@ main .caja-de-busqueda .input-container textarea {
 		padding: 1rem;
 	}
 
-	header .menu.active .Principal-menu ul:last-child li a button {
+	header .menu.active .Principal-menu ul:last-child li button {
 		width: 100%;
 		max-width: 300px;
 		flex-direction: row;
@@ -563,7 +715,6 @@ main .caja-de-busqueda .input-container textarea {
 		gap: 1rem;
 	}
 
-	header .menu.active .Principal-menu ul:last-child li a button span,
 	header .menu.active .user .name-user {
 		display: flex;
 	}
@@ -584,7 +735,6 @@ main .caja-de-busqueda .input-container textarea {
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-
 	}
 
 	header .menu.active .secundary-menu ul {
