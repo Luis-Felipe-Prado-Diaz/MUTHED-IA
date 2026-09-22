@@ -294,15 +294,9 @@ header .menu .secundary-menu {
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.5rem;
-<<<<<<< HEAD
-	border-top: 1px solid var(--color-quinario);
-	border-bottom: 1px solid var(--color-quinario);
-	transition: width 0.8s ease-in-out;
-=======
 	border-top: 1px solid var(--color-terciario);
 	border-bottom: 1px solid var(--color-terciario);
 	transition: width var(--transition-base);
->>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 }
 
 header .menu .secundary-menu h3 {
@@ -319,11 +313,7 @@ header .menu.active .secundary-menu h3,
 header .menu.active .secundary-menu ul,
 header .menu.active .user .name-user {
 	display: none;
-<<<<<<< HEAD
-	transition: width 0.8s ease-in-out;
-=======
 	transition: width var(--transition-base);
->>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 	/* Esto elimina el texto por completo para que la caja pueda encogerse */
 }
 
@@ -340,10 +330,6 @@ header .menu .secundary-menu ul {
 	height: 300px;
 	overflow-y: auto;
 	scrollbar-width: thin;
-<<<<<<< HEAD
-	scrollbar-color: var(--color-quinario) var(--color-septimo);
-	transition: width 0.8s ease-in-out;
-=======
 	scrollbar-color: var(--color-cuaternario) transparent;
 	transition: width var(--transition-base);
 }
@@ -355,7 +341,6 @@ header .menu .secundary-menu ul::-webkit-scrollbar {
 header .menu .secundary-menu ul::-webkit-scrollbar-thumb {
 	background-color: var(--color-cuaternario);
 	border-radius: var(--radius-pill);
->>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 }
 
 header .menu.active .secundary-menu ul {
