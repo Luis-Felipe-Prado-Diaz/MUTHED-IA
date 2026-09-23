@@ -5,7 +5,6 @@
 }
 
 :root {
-	/* Colores originales del proyecto — no se renombran ni se añaden tonos nuevos */
 	--color-primario: #181818;
 	--color-secundario: #303030;
 	--color-terciario: #494949;
@@ -16,7 +15,6 @@
 	--color-texto-negro: black;
 	--color-texto-blanco: #ffffff;
 
-	/* Tokens de apoyo: solo medidas y tiempos reutilizables, no son colores nuevos */
 	--sidebar-width: 250px;
 	--sidebar-width-collapsed: 80px;
 	--radius-sm: 5px;
@@ -90,7 +88,7 @@ textarea:focus-visible {
    SIDEBAR — Contenedor principal
    ========================================================================== */
 
-header .menu {
+.menu {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -109,7 +107,7 @@ header .menu {
 	z-index: 1000;
 }
 
-header .menu.active {
+.menu.active {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -129,15 +127,12 @@ header .menu.active {
 	box-shadow: var(--shadow-sidebar);
 }
 
-header .menu ul {
+.menu ul {
 	list-style: none;
 }
 
-/* ==========================================================================
-   SIDEBAR — Menú de iconos superior (logo, buscar, hamburguesa, "Nuevo")
-   ========================================================================== */
 
-header .menu .Principal-menu ul {
+.menu .Principal-menu ul {
 	display: flex;
 	list-style: none;
 	width: var(--sidebar-width);
@@ -147,7 +142,7 @@ header .menu .Principal-menu ul {
 	padding: 1.5rem;
 }
 
-header .menu.active .Principal-menu ul {
+.menu.active .Principal-menu ul {
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
@@ -159,8 +154,8 @@ header .menu.active .Principal-menu ul {
 	width: max-content;
 }
 
-header .menu .Principal-menu ul li a,
-header .menu .Principal-menu ul li button {
+.menu .Principal-menu ul li a,
+.menu .Principal-menu ul li button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -176,7 +171,7 @@ header .menu .Principal-menu ul li button {
 	transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
-header .menu .Principal-menu ul li svg {
+.menu .Principal-menu ul li svg {
 	fill: var(--color-texto-blanco);
 	width: 2rem;
 	height: 2rem;
@@ -184,19 +179,19 @@ header .menu .Principal-menu ul li svg {
 	transition: fill var(--transition-fast);
 }
 
-header .menu .Principal-menu ul li a:hover,
-header .menu .Principal-menu ul li button:hover {
+.menu .Principal-menu ul li a:hover,
+.menu .Principal-menu ul li button:hover {
 	color: var(--color-septimo);
 	transform: translateY(-2px);
 }
 
-header .menu .Principal-menu ul li a:hover svg,
-header .menu .Principal-menu ul li button:hover svg {
+.menu .Principal-menu ul li a:hover svg,
+.menu .Principal-menu ul li button:hover svg {
 	fill: var(--color-septimo);
 }
 
-header .menu.active .Principal-menu ul li a,
-header .menu.active .Principal-menu ul li button {
+.menu.active .Principal-menu ul li a,
+.menu.active .Principal-menu ul li button {
 	color: var(--color-texto-blanco);
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -204,14 +199,14 @@ header .menu.active .Principal-menu ul li button {
 	height: 2rem;
 }
 
-header .menu.active .Principal-menu ul li a svg,
-header .menu.active .Principal-menu ul li button svg {
+.menu.active .Principal-menu ul li a svg,
+.menu.active .Principal-menu ul li button svg {
 	fill: var(--color-texto-blanco);
 	width: 2rem;
 	height: 2rem;
 }
 
-header .menu .Principal-menu ul:nth-child(2) {
+.menu .Principal-menu ul:nth-child(2) {
 	padding: 1rem;
 	width: var(--sidebar-width);
 	display: flex;
@@ -220,7 +215,7 @@ header .menu .Principal-menu ul:nth-child(2) {
 	background-color: transparent;
 }
 
-header .menu.active .Principal-menu ul:nth-child(2) {
+.menu.active .Principal-menu ul:nth-child(2) {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -229,8 +224,8 @@ header .menu.active .Principal-menu ul:nth-child(2) {
 	background-color: transparent;
 }
 
-/* Botón "Nuevo chat": lo tratamos como acción primaria del sidebar */
-header .menu .Principal-menu ul:nth-child(2) li button {
+
+.menu .Principal-menu ul:nth-child(2) li button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -247,19 +242,19 @@ header .menu .Principal-menu ul:nth-child(2) li button {
 	transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-header .menu .Principal-menu ul:nth-child(2) li button svg {
+.menu .Principal-menu ul:nth-child(2) li button svg {
 	width: 1.25rem;
 	height: 1.25rem;
 	fill: var(--color-texto-blanco);
 	pointer-events: none;
 }
 
-header .menu .Principal-menu ul:nth-child(2) li button:hover {
+.menu .Principal-menu ul:nth-child(2) li button:hover {
 	background-color: var(--color-cuaternario);
 	border-color: var(--color-septimo);
 }
 
-header .menu.active .Principal-menu ul:nth-child(2) li button {
+.menu.active .Principal-menu ul:nth-child(2) li button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -275,37 +270,28 @@ header .menu.active .Principal-menu ul:nth-child(2) li button {
 	width: 100%;
 }
 
-header .menu.active .Principal-menu ul:nth-child(2) li button:hover {
+.menu.active .Principal-menu ul:nth-child(2) li button:hover {
 	background-color: var(--color-cuaternario);
 }
 
-header .menu.active .Principal-menu ul:nth-child(2) li button svg {
+.menu.active .Principal-menu ul:nth-child(2) li button svg {
 	width: 1.5rem;
 	height: 1.5rem;
 	fill: var(--color-texto-blanco);
 }
 
-/* ==========================================================================
-   SIDEBAR — Historial de chats
-   ========================================================================== */
 
-header .menu .secundary-menu {
+.menu .secundary-menu {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.5rem;
-<<<<<<< HEAD
-	border-top: 1px solid var(--color-quinario);
-	border-bottom: 1px solid var(--color-quinario);
-	transition: width 0.8s ease-in-out;
-=======
 	border-top: 1px solid var(--color-terciario);
 	border-bottom: 1px solid var(--color-terciario);
 	transition: width var(--transition-base);
->>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 }
 
-header .menu .secundary-menu h3 {
+.menu .secundary-menu h3 {
 	font-family: "Poppins", sans-serif;
 	font-size: 0.8rem;
 	font-weight: 600;
@@ -315,23 +301,17 @@ header .menu .secundary-menu h3 {
 	padding: 1.5rem 1.5rem 0.5rem;
 }
 
-header .menu.active .secundary-menu h3,
-header .menu.active .secundary-menu ul,
-header .menu.active .user .name-user {
+.menu.active .secundary-menu h3,
+.menu.active .secundary-menu ul,
+.menu.active .user .name-user {
 	display: none;
-<<<<<<< HEAD
-	transition: width 0.8s ease-in-out;
-=======
 	transition: width var(--transition-base);
->>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
-	/* Esto elimina el texto por completo para que la caja pueda encogerse */
 }
 
-header .menu .secundary-menu ul {
+.menu .secundary-menu ul {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	justify-content: center;
 	gap: 0.35rem;
 	overflow: hidden;
 	padding: 0.5rem 1rem 1rem;
@@ -340,25 +320,20 @@ header .menu .secundary-menu ul {
 	height: 300px;
 	overflow-y: auto;
 	scrollbar-width: thin;
-<<<<<<< HEAD
-	scrollbar-color: var(--color-quinario) var(--color-septimo);
-	transition: width 0.8s ease-in-out;
-=======
 	scrollbar-color: var(--color-cuaternario) transparent;
 	transition: width var(--transition-base);
 }
 
-header .menu .secundary-menu ul::-webkit-scrollbar {
+.menu .secundary-menu ul::-webkit-scrollbar {
 	width: 6px;
 }
 
-header .menu .secundary-menu ul::-webkit-scrollbar-thumb {
+.menu .secundary-menu ul::-webkit-scrollbar-thumb {
 	background-color: var(--color-cuaternario);
 	border-radius: var(--radius-pill);
->>>>>>> b75fe2368cb3859db0ebda0bdaec5fcb95792146
 }
 
-header .menu.active .secundary-menu ul {
+.menu.active .secundary-menu ul {
 	align-items: center;
 	padding: 1rem;
 	list-style: none;
@@ -366,7 +341,7 @@ header .menu.active .secundary-menu ul {
 	transition: width var(--transition-base);
 }
 
-header .menu .secundary-menu ul li a {
+.menu .secundary-menu ul li a {
 	display: block;
 	color: var(--color-texto-blanco);
 	font-size: 0.9rem;
@@ -381,16 +356,13 @@ header .menu .secundary-menu ul li a {
 	transition: background-color var(--transition-fast), padding-left var(--transition-fast);
 }
 
-header .menu .secundary-menu ul li a:hover {
+.menu .secundary-menu ul li a:hover {
 	background-color: var(--color-terciario);
 	padding-left: 1rem;
 }
 
-/* ==========================================================================
-   SIDEBAR — Usuario
-   ========================================================================== */
 
-header .menu .user {
+.menu .user {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -400,14 +372,14 @@ header .menu .user {
 	width: var(--sidebar-width);
 }
 
-header .menu .user .imagen-user {
+.menu .user .imagen-user {
 	width: 3rem;
 	height: 3rem;
 	fill: var(--color-texto-negro);
 	border-radius: var(--radius-sm);
 }
 
-header .menu .user .imagen-user svg {
+.menu .user .imagen-user svg {
 	width: 2.5rem;
 	height: 2.5rem;
 	fill: var(--color-texto-negro);
@@ -416,17 +388,17 @@ header .menu .user .imagen-user svg {
 	background-color: var(--color-septimo);
 }
 
-header .menu .user .name-user h3 {
+.menu .user .name-user h3 {
 	font-size: 1rem;
 	color: var(--color-texto-blanco);
 }
 
-header .menu .user .name-user p {
+.menu .user .name-user p {
 	font-size: 0.8rem;
 	color: var(--color-sexto);
 }
 
-header .menu.active .user {
+.menu.active .user {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -439,13 +411,13 @@ header .menu.active .user {
 	overflow: hidden;
 }
 
-header .menu.active .user .name-user {
+.menu.active .user .name-user {
 	visibility: hidden;
 	overflow: hidden;
 	height: 0;
 }
 
-header .menu.active .user .imagen-user svg {
+.menu.active .user .imagen-user svg {
 	width: 3rem;
 	height: 3rem;
 	fill: var(--color-texto-negro);
@@ -454,31 +426,8 @@ header .menu.active .user .imagen-user svg {
 	padding: 0.5rem;
 }
 
-/* ==========================================================================
-   CONTENIDO PRINCIPAL
-   ========================================================================== */
 
-main {
-	margin-left: var(--sidebar-width);
-	padding: 2rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	gap: 1rem;
-	min-height: 100vh;
-	transition: margin-left var(--transition-base);
-}
-
-body:has(header .menu.active) main {
-	margin-left: var(--sidebar-width-collapsed);
-}
-
-/* ==========================================================================
-   HERO — Título y subtítulo
-   ========================================================================== */
-
-main .texto {
+.texto {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -486,7 +435,7 @@ main .texto {
 	gap: 0.5rem;
 }
 
-main .texto .titulo h1 {
+.texto .titulo h1 {
 	font-size: clamp(2.75rem, 5vw + 1rem, 7rem);
 	line-height: 1.1;
 	color: var(--color-texto-blanco);
@@ -494,16 +443,13 @@ main .texto .titulo h1 {
 	text-shadow: var(--shadow-soft);
 }
 
-main .texto .subtitulo p {
+.texto .subtitulo p {
 	font-size: clamp(1.25rem, 1.5vw + 0.75rem, 2rem);
 	color: var(--color-quinario);
 }
 
-/* ==========================================================================
-   CAJA DE BÚSQUEDA
-   ========================================================================== */
 
-main .caja-de-busqueda {
+.caja-de-busqueda {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -514,7 +460,7 @@ main .caja-de-busqueda {
 	width: 100%;
 }
 
-main .caja-de-busqueda .label-container label {
+.caja-de-busqueda .label-container label {
 	font-size: 1.5rem;
 	font-weight: 400;
 	color: var(--color-texto-blanco);
@@ -522,7 +468,7 @@ main .caja-de-busqueda .label-container label {
 	width: 100%;
 }
 
-main .caja-de-busqueda .input-container {
+.caja-de-busqueda .input-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -535,12 +481,12 @@ main .caja-de-busqueda .input-container {
 	transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-main .caja-de-busqueda .input-container:focus-within {
+.caja-de-busqueda .input-container:focus-within {
 	border-color: var(--color-septimo);
 	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
-main .caja-de-busqueda .input-container svg {
+.caja-de-busqueda .input-container svg {
 	fill: var(--color-texto-blanco);
 	width: 2.75rem;
 	height: 2.75rem;
@@ -552,22 +498,22 @@ main .caja-de-busqueda .input-container svg {
 	transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-main .caja-de-busqueda .input-container svg:hover {
+.caja-de-busqueda .input-container svg:hover {
 	background-color: var(--color-cuaternario);
 	transform: scale(1.05);
 }
 
-/* El icono de enviar se distingue como acción principal, reutilizando el gris más claro de la paleta */
-main .caja-de-busqueda .input-container svg[data-action="enviar"] {
+
+.caja-de-busqueda .input-container svg[data-action="enviar"] {
 	background-color: var(--color-septimo);
 	fill: var(--color-texto-negro);
 }
 
-main .caja-de-busqueda .input-container svg[data-action="enviar"]:hover {
+.caja-de-busqueda .input-container svg[data-action="enviar"]:hover {
 	background-color: var(--color-sexto);
 }
 
-main .caja-de-busqueda .input-container textarea {
+.caja-de-busqueda .input-container textarea {
 	font-size: 1rem;
 	font-weight: 400;
 	color: var(--color-texto-blanco);
@@ -581,13 +527,10 @@ main .caja-de-busqueda .input-container textarea {
 	max-height: 200px;
 }
 
-main .caja-de-busqueda .input-container textarea::placeholder {
+.caja-de-busqueda .input-container textarea::placeholder {
 	color: var(--color-sexto);
 }
 
-/* ==========================================================================
-   ACCESIBILIDAD — Respeta la preferencia de reducir animaciones
-   ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 	* {
@@ -596,41 +539,38 @@ main .caja-de-busqueda .input-container textarea::placeholder {
 	}
 }
 
-/* ==========================================================================
-   RESPONSIVE — Mobile
-   ========================================================================== */
 
 @media (max-width: 768px) {
-	main .texto .titulo h1 {
+	.texto .titulo h1 {
 		font-size: 3.5rem;
 		line-height: 1.1;
 	}
 
-	main .texto .subtitulo p {
+	.texto .subtitulo p {
 		font-size: 1.5rem;
 	}
 
-	main .caja-de-busqueda .label-container label {
+	.caja-de-busqueda .label-container label {
 		font-size: 1.2rem;
 		text-align: center;
 	}
 
-	main .caja-de-busqueda {
+	.caja-de-busqueda {
 		padding: 0.5rem 0;
 	}
 
-	main .caja-de-busqueda .input-container {
+	.caja-de-busqueda .input-container {
 		padding: 0.5rem;
 		gap: 0.5rem;
 	}
 
-	main .caja-de-busqueda .input-container svg {
+	.caja-de-busqueda .input-container svg {
 		width: 2rem;
 		height: 2rem;
 		padding: 0.3rem;
 	}
 
-	header .menu {
+	.menu {
 		width: 100%;
 		height: 70px;
 		flex-direction: row;
@@ -646,41 +586,41 @@ main .caja-de-busqueda .input-container textarea::placeholder {
 		gap: 3rem;
 	}
 
-	header .menu .Principal-menu ul {
+	.menu .Principal-menu ul {
 		flex-direction: row;
 		padding: 0;
 		background-color: transparent;
 		gap: 1.5rem;
 	}
 
-	header .menu .Principal-menu ul:last-child {
+	.menu .Principal-menu ul:last-child {
 		width: auto;
 		padding: 0;
 		display: none;
 	}
 
-	header .menu .Principal-menu ul li button {
+	.menu .Principal-menu ul li button {
 		width: 45px;
 		height: 45px;
 		padding: 0;
 		justify-content: center;
 	}
 
-	header .menu .user .name-user {
+	.menu .user .name-user {
 		display: none;
 	}
 
-	header .menu .secundary-menu {
+	.menu .secundary-menu {
 		display: none;
 	}
 
-	header .menu .user {
+	.menu .user {
 		width: auto;
 		padding: 0;
 		background-color: transparent;
 	}
 
-	header .menu.active {
+	.menu.active {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -694,7 +634,7 @@ main .caja-de-busqueda .input-container textarea::placeholder {
 		overflow-y: auto;
 	}
 
-	header .menu.active .Principal-menu ul {
+	.menu.active .Principal-menu ul {
 		flex-direction: row;
 		display: flex;
 		gap: 2rem;
@@ -702,12 +642,12 @@ main .caja-de-busqueda .input-container textarea::placeholder {
 		justify-content: center;
 	}
 
-	header .menu.active .Principal-menu ul:last-child {
+	.menu.active .Principal-menu ul:last-child {
 		width: 100%;
 		padding: 1rem;
 	}
 
-	header .menu.active .Principal-menu ul:last-child li button {
+	.menu.active .Principal-menu ul:last-child li button {
 		width: 100%;
 		max-width: 300px;
 		flex-direction: row;
@@ -715,20 +655,20 @@ main .caja-de-busqueda .input-container textarea::placeholder {
 		gap: 1rem;
 	}
 
-	header .menu.active .user .name-user {
+	.menu.active .user .name-user {
 		display: flex;
 	}
 
-	header .menu.active .secundary-menu {
+	.menu.active .secundary-menu {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
 		border-bottom: none;
 	}
 
-	header .menu.active .secundary-menu h3,
-	header .menu.active .secundary-menu ul,
-	header .menu.active .user .name-user {
+	.menu.active .secundary-menu h3,
+	.menu.active .secundary-menu ul,
+	.menu.active .user .name-user {
 		visibility: visible;
 		display: flex;
 		flex-direction: column;
@@ -737,27 +677,16 @@ main .caja-de-busqueda .input-container textarea::placeholder {
 		width: 100%;
 	}
 
-	header .menu.active .secundary-menu ul {
+	.menu.active .secundary-menu ul {
 		height: auto;
 		max-height: 40vh;
 	}
 
-	header .menu.active .user {
+	.menu.active .user {
 		width: 100%;
 		flex-direction: column;
 		margin-top: auto;
 		padding: 1rem;
 	}
 
-	main {
-		margin-left: 0;
-		margin-top: 70px;
-		padding: 1rem;
-		min-height: calc(100vh - 70px);
-	}
-
-	body:has(header .menu.active) main {
-		margin-left: 0;
-		display: none;
-	}
 }
