@@ -5,6 +5,7 @@
 }
 
 :root {
+	/* Colores originales del proyecto — no se renombran ni se añaden tonos nuevos */
 	--color-primario: #181818;
 	--color-secundario: #303030;
 	--color-terciario: #494949;
@@ -15,6 +16,7 @@
 	--color-texto-negro: black;
 	--color-texto-blanco: #ffffff;
 
+	/* Tokens de apoyo: solo medidas y tiempos reutilizables, no son colores nuevos */
 	--sidebar-width: 250px;
 	--sidebar-width-collapsed: 80px;
 	--radius-sm: 5px;
@@ -88,7 +90,7 @@ textarea:focus-visible {
    SIDEBAR — Contenedor principal
    ========================================================================== */
 
-.menu {
+header .menu {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -107,7 +109,7 @@ textarea:focus-visible {
 	z-index: 1000;
 }
 
-.menu.active {
+header .menu.active {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -127,12 +129,15 @@ textarea:focus-visible {
 	box-shadow: var(--shadow-sidebar);
 }
 
-.menu ul {
+header .menu ul {
 	list-style: none;
 }
 
+/* ==========================================================================
+   SIDEBAR — Menú de iconos superior (logo, buscar, hamburguesa, "Nuevo")
+   ========================================================================== */
 
-.menu .Principal-menu ul {
+header .menu .Principal-menu ul {
 	display: flex;
 	list-style: none;
 	width: var(--sidebar-width);
@@ -142,7 +147,7 @@ textarea:focus-visible {
 	padding: 1.5rem;
 }
 
-.menu.active .Principal-menu ul {
+header .menu.active .Principal-menu ul {
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
@@ -154,8 +159,8 @@ textarea:focus-visible {
 	width: max-content;
 }
 
-.menu .Principal-menu ul li a,
-.menu .Principal-menu ul li button {
+header .menu .Principal-menu ul li a,
+header .menu .Principal-menu ul li button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -171,7 +176,7 @@ textarea:focus-visible {
 	transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
-.menu .Principal-menu ul li svg {
+header .menu .Principal-menu ul li svg {
 	fill: var(--color-texto-blanco);
 	width: 2rem;
 	height: 2rem;
@@ -179,19 +184,19 @@ textarea:focus-visible {
 	transition: fill var(--transition-fast);
 }
 
-.menu .Principal-menu ul li a:hover,
-.menu .Principal-menu ul li button:hover {
+header .menu .Principal-menu ul li a:hover,
+header .menu .Principal-menu ul li button:hover {
 	color: var(--color-septimo);
 	transform: translateY(-2px);
 }
 
-.menu .Principal-menu ul li a:hover svg,
-.menu .Principal-menu ul li button:hover svg {
+header .menu .Principal-menu ul li a:hover svg,
+header .menu .Principal-menu ul li button:hover svg {
 	fill: var(--color-septimo);
 }
 
-.menu.active .Principal-menu ul li a,
-.menu.active .Principal-menu ul li button {
+header .menu.active .Principal-menu ul li a,
+header .menu.active .Principal-menu ul li button {
 	color: var(--color-texto-blanco);
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -199,14 +204,14 @@ textarea:focus-visible {
 	height: 2rem;
 }
 
-.menu.active .Principal-menu ul li a svg,
-.menu.active .Principal-menu ul li button svg {
+header .menu.active .Principal-menu ul li a svg,
+header .menu.active .Principal-menu ul li button svg {
 	fill: var(--color-texto-blanco);
 	width: 2rem;
 	height: 2rem;
 }
 
-.menu .Principal-menu ul:nth-child(2) {
+header .menu .Principal-menu ul:nth-child(2) {
 	padding: 1rem;
 	width: var(--sidebar-width);
 	display: flex;
@@ -215,7 +220,7 @@ textarea:focus-visible {
 	background-color: transparent;
 }
 
-.menu.active .Principal-menu ul:nth-child(2) {
+header .menu.active .Principal-menu ul:nth-child(2) {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -224,8 +229,8 @@ textarea:focus-visible {
 	background-color: transparent;
 }
 
-
-.menu .Principal-menu ul:nth-child(2) li button {
+/* Botón "Nuevo chat": lo tratamos como acción primaria del sidebar */
+header .menu .Principal-menu ul:nth-child(2) li button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -242,19 +247,19 @@ textarea:focus-visible {
 	transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.menu .Principal-menu ul:nth-child(2) li button svg {
+header .menu .Principal-menu ul:nth-child(2) li button svg {
 	width: 1.25rem;
 	height: 1.25rem;
 	fill: var(--color-texto-blanco);
 	pointer-events: none;
 }
 
-.menu .Principal-menu ul:nth-child(2) li button:hover {
+header .menu .Principal-menu ul:nth-child(2) li button:hover {
 	background-color: var(--color-cuaternario);
 	border-color: var(--color-septimo);
 }
 
-.menu.active .Principal-menu ul:nth-child(2) li button {
+header .menu.active .Principal-menu ul:nth-child(2) li button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -270,18 +275,21 @@ textarea:focus-visible {
 	width: 100%;
 }
 
-.menu.active .Principal-menu ul:nth-child(2) li button:hover {
+header .menu.active .Principal-menu ul:nth-child(2) li button:hover {
 	background-color: var(--color-cuaternario);
 }
 
-.menu.active .Principal-menu ul:nth-child(2) li button svg {
+header .menu.active .Principal-menu ul:nth-child(2) li button svg {
 	width: 1.5rem;
 	height: 1.5rem;
 	fill: var(--color-texto-blanco);
 }
 
+/* ==========================================================================
+   SIDEBAR — Historial de chats
+   ========================================================================== */
 
-.menu .secundary-menu {
+header .menu .secundary-menu {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -291,7 +299,7 @@ textarea:focus-visible {
 	transition: width var(--transition-base);
 }
 
-.menu .secundary-menu h3 {
+header .menu .secundary-menu h3 {
 	font-family: "Poppins", sans-serif;
 	font-size: 0.8rem;
 	font-weight: 600;
@@ -301,21 +309,19 @@ textarea:focus-visible {
 	padding: 1.5rem 1.5rem 0.5rem;
 }
 
-.menu.active .secundary-menu h3,
-.menu.active .secundary-menu ul,
-.menu.active .user .name-user {
+header .menu.active .secundary-menu h3,
+header .menu.active .secundary-menu ul,
+header .menu.active .user .name-user {
 	display: none;
 	transition: width var(--transition-base);
-<<<<<<< HEAD
-=======
 	/* Esto elimina el texto por completo para que la caja pueda encogerse */
->>>>>>> 5954824755fe06df764e2d90c237b40526d45ddf
 }
 
-.menu .secundary-menu ul {
+header .menu .secundary-menu ul {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	justify-content: center;
 	gap: 0.35rem;
 	overflow: hidden;
 	padding: 0.5rem 1rem 1rem;
@@ -328,16 +334,16 @@ textarea:focus-visible {
 	transition: width var(--transition-base);
 }
 
-.menu .secundary-menu ul::-webkit-scrollbar {
+header .menu .secundary-menu ul::-webkit-scrollbar {
 	width: 6px;
 }
 
-.menu .secundary-menu ul::-webkit-scrollbar-thumb {
+header .menu .secundary-menu ul::-webkit-scrollbar-thumb {
 	background-color: var(--color-cuaternario);
 	border-radius: var(--radius-pill);
 }
 
-.menu.active .secundary-menu ul {
+header .menu.active .secundary-menu ul {
 	align-items: center;
 	padding: 1rem;
 	list-style: none;
@@ -345,7 +351,7 @@ textarea:focus-visible {
 	transition: width var(--transition-base);
 }
 
-.menu .secundary-menu ul li a {
+header .menu .secundary-menu ul li a {
 	display: block;
 	color: var(--color-texto-blanco);
 	font-size: 0.9rem;
@@ -360,13 +366,16 @@ textarea:focus-visible {
 	transition: background-color var(--transition-fast), padding-left var(--transition-fast);
 }
 
-.menu .secundary-menu ul li a:hover {
+header .menu .secundary-menu ul li a:hover {
 	background-color: var(--color-terciario);
 	padding-left: 1rem;
 }
 
+/* ==========================================================================
+   SIDEBAR — Usuario
+   ========================================================================== */
 
-.menu .user {
+header .menu .user {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -376,14 +385,14 @@ textarea:focus-visible {
 	width: var(--sidebar-width);
 }
 
-.menu .user .imagen-user {
+header .menu .user .imagen-user {
 	width: 3rem;
 	height: 3rem;
 	fill: var(--color-texto-negro);
 	border-radius: var(--radius-sm);
 }
 
-.menu .user .imagen-user svg {
+header .menu .user .imagen-user svg {
 	width: 2.5rem;
 	height: 2.5rem;
 	fill: var(--color-texto-negro);
@@ -392,17 +401,17 @@ textarea:focus-visible {
 	background-color: var(--color-septimo);
 }
 
-.menu .user .name-user h3 {
+header .menu .user .name-user h3 {
 	font-size: 1rem;
 	color: var(--color-texto-blanco);
 }
 
-.menu .user .name-user p {
+header .menu .user .name-user p {
 	font-size: 0.8rem;
 	color: var(--color-sexto);
 }
 
-.menu.active .user {
+header .menu.active .user {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -415,13 +424,13 @@ textarea:focus-visible {
 	overflow: hidden;
 }
 
-.menu.active .user .name-user {
+header .menu.active .user .name-user {
 	visibility: hidden;
 	overflow: hidden;
 	height: 0;
 }
 
-.menu.active .user .imagen-user svg {
+header .menu.active .user .imagen-user svg {
 	width: 3rem;
 	height: 3rem;
 	fill: var(--color-texto-negro);
@@ -430,8 +439,31 @@ textarea:focus-visible {
 	padding: 0.5rem;
 }
 
+/* ==========================================================================
+   CONTENIDO PRINCIPAL
+   ========================================================================== */
 
-.texto {
+main {
+	margin-left: var(--sidebar-width);
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	min-height: 100vh;
+	transition: margin-left var(--transition-base);
+}
+
+body:has(header .menu.active) main {
+	margin-left: var(--sidebar-width-collapsed);
+}
+
+/* ==========================================================================
+   HERO — Título y subtítulo
+   ========================================================================== */
+
+main .texto {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -439,7 +471,7 @@ textarea:focus-visible {
 	gap: 0.5rem;
 }
 
-.texto .titulo h1 {
+main .texto .titulo h1 {
 	font-size: clamp(2.75rem, 5vw + 1rem, 7rem);
 	line-height: 1.1;
 	color: var(--color-texto-blanco);
@@ -447,13 +479,16 @@ textarea:focus-visible {
 	text-shadow: var(--shadow-soft);
 }
 
-.texto .subtitulo p {
+main .texto .subtitulo p {
 	font-size: clamp(1.25rem, 1.5vw + 0.75rem, 2rem);
 	color: var(--color-quinario);
 }
 
+/* ==========================================================================
+   CAJA DE BÚSQUEDA
+   ========================================================================== */
 
-.caja-de-busqueda {
+main .caja-de-busqueda {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -464,7 +499,7 @@ textarea:focus-visible {
 	width: 100%;
 }
 
-.caja-de-busqueda .label-container label {
+main .caja-de-busqueda .label-container label {
 	font-size: 1.5rem;
 	font-weight: 400;
 	color: var(--color-texto-blanco);
@@ -472,7 +507,7 @@ textarea:focus-visible {
 	width: 100%;
 }
 
-.caja-de-busqueda .input-container {
+main .caja-de-busqueda .input-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -485,12 +520,12 @@ textarea:focus-visible {
 	transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.caja-de-busqueda .input-container:focus-within {
+main .caja-de-busqueda .input-container:focus-within {
 	border-color: var(--color-septimo);
 	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
-.caja-de-busqueda .input-container svg {
+main .caja-de-busqueda .input-container svg {
 	fill: var(--color-texto-blanco);
 	width: 2.75rem;
 	height: 2.75rem;
@@ -502,22 +537,22 @@ textarea:focus-visible {
 	transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.caja-de-busqueda .input-container svg:hover {
+main .caja-de-busqueda .input-container svg:hover {
 	background-color: var(--color-cuaternario);
 	transform: scale(1.05);
 }
 
-
-.caja-de-busqueda .input-container svg[data-action="enviar"] {
+/* El icono de enviar se distingue como acción principal, reutilizando el gris más claro de la paleta */
+main .caja-de-busqueda .input-container svg[data-action="enviar"] {
 	background-color: var(--color-septimo);
 	fill: var(--color-texto-negro);
 }
 
-.caja-de-busqueda .input-container svg[data-action="enviar"]:hover {
+main .caja-de-busqueda .input-container svg[data-action="enviar"]:hover {
 	background-color: var(--color-sexto);
 }
 
-.caja-de-busqueda .input-container textarea {
+main .caja-de-busqueda .input-container textarea {
 	font-size: 1rem;
 	font-weight: 400;
 	color: var(--color-texto-blanco);
@@ -531,10 +566,13 @@ textarea:focus-visible {
 	max-height: 200px;
 }
 
-.caja-de-busqueda .input-container textarea::placeholder {
+main .caja-de-busqueda .input-container textarea::placeholder {
 	color: var(--color-sexto);
 }
 
+/* ==========================================================================
+   ACCESIBILIDAD — Respeta la preferencia de reducir animaciones
+   ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 	* {
@@ -543,38 +581,41 @@ textarea:focus-visible {
 	}
 }
 
+/* ==========================================================================
+   RESPONSIVE — Mobile
+   ========================================================================== */
 
 @media (max-width: 768px) {
-	.texto .titulo h1 {
+	main .texto .titulo h1 {
 		font-size: 3.5rem;
 		line-height: 1.1;
 	}
 
-	.texto .subtitulo p {
+	main .texto .subtitulo p {
 		font-size: 1.5rem;
 	}
 
-	.caja-de-busqueda .label-container label {
+	main .caja-de-busqueda .label-container label {
 		font-size: 1.2rem;
 		text-align: center;
 	}
 
-	.caja-de-busqueda {
+	main .caja-de-busqueda {
 		padding: 0.5rem 0;
 	}
 
-	.caja-de-busqueda .input-container {
+	main .caja-de-busqueda .input-container {
 		padding: 0.5rem;
 		gap: 0.5rem;
 	}
 
-	.caja-de-busqueda .input-container svg {
+	main .caja-de-busqueda .input-container svg {
 		width: 2rem;
 		height: 2rem;
 		padding: 0.3rem;
 	}
 
-	.menu {
+	header .menu {
 		width: 100%;
 		height: 70px;
 		flex-direction: row;
@@ -590,41 +631,41 @@ textarea:focus-visible {
 		gap: 3rem;
 	}
 
-	.menu .Principal-menu ul {
+	header .menu .Principal-menu ul {
 		flex-direction: row;
 		padding: 0;
 		background-color: transparent;
 		gap: 1.5rem;
 	}
 
-	.menu .Principal-menu ul:last-child {
+	header .menu .Principal-menu ul:last-child {
 		width: auto;
 		padding: 0;
 		display: none;
 	}
 
-	.menu .Principal-menu ul li button {
+	header .menu .Principal-menu ul li button {
 		width: 45px;
 		height: 45px;
 		padding: 0;
 		justify-content: center;
 	}
 
-	.menu .user .name-user {
+	header .menu .user .name-user {
 		display: none;
 	}
 
-	.menu .secundary-menu {
+	header .menu .secundary-menu {
 		display: none;
 	}
 
-	.menu .user {
+	header .menu .user {
 		width: auto;
 		padding: 0;
 		background-color: transparent;
 	}
 
-	.menu.active {
+	header .menu.active {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -638,7 +679,7 @@ textarea:focus-visible {
 		overflow-y: auto;
 	}
 
-	.menu.active .Principal-menu ul {
+	header .menu.active .Principal-menu ul {
 		flex-direction: row;
 		display: flex;
 		gap: 2rem;
@@ -646,12 +687,12 @@ textarea:focus-visible {
 		justify-content: center;
 	}
 
-	.menu.active .Principal-menu ul:last-child {
+	header .menu.active .Principal-menu ul:last-child {
 		width: 100%;
 		padding: 1rem;
 	}
 
-	.menu.active .Principal-menu ul:last-child li button {
+	header .menu.active .Principal-menu ul:last-child li button {
 		width: 100%;
 		max-width: 300px;
 		flex-direction: row;
@@ -659,20 +700,20 @@ textarea:focus-visible {
 		gap: 1rem;
 	}
 
-	.menu.active .user .name-user {
+	header .menu.active .user .name-user {
 		display: flex;
 	}
 
-	.menu.active .secundary-menu {
+	header .menu.active .secundary-menu {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
 		border-bottom: none;
 	}
 
-	.menu.active .secundary-menu h3,
-	.menu.active .secundary-menu ul,
-	.menu.active .user .name-user {
+	header .menu.active .secundary-menu h3,
+	header .menu.active .secundary-menu ul,
+	header .menu.active .user .name-user {
 		visibility: visible;
 		display: flex;
 		flex-direction: column;
@@ -681,16 +722,27 @@ textarea:focus-visible {
 		width: 100%;
 	}
 
-	.menu.active .secundary-menu ul {
+	header .menu.active .secundary-menu ul {
 		height: auto;
 		max-height: 40vh;
 	}
 
-	.menu.active .user {
+	header .menu.active .user {
 		width: 100%;
 		flex-direction: column;
 		margin-top: auto;
 		padding: 1rem;
 	}
 
+	main {
+		margin-left: 0;
+		margin-top: 70px;
+		padding: 1rem;
+		min-height: calc(100vh - 70px);
+	}
+
+	body:has(header .menu.active) main {
+		margin-left: 0;
+		display: none;
+	}
 }

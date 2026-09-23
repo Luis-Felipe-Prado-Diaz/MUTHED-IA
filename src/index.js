@@ -1,8 +1,6 @@
 import './components/header.js';
+
+
 import './components/main.js';
+import './components/titulo.js';
 
-document.addEventListener('sidebar-change', ({ detail }) => {
-	const main = document.querySelector('app-main');
-
-	main?.toggleAttribute('sidebar-collapsed', detail.collapsed);
-});
