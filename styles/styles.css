@@ -306,6 +306,10 @@ textarea:focus-visible {
 .menu.active .user .name-user {
 	display: none;
 	transition: width var(--transition-base);
+<<<<<<< HEAD
+=======
+	/* Esto elimina el texto por completo para que la caja pueda encogerse */
+>>>>>>> 5954824755fe06df764e2d90c237b40526d45ddf
 }
 
 .menu .secundary-menu ul {
