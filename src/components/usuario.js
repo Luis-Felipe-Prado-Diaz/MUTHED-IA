@@ -5,10 +5,23 @@ export default (() => {
     constructor() {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
+
+      document.addEventListener('menu-toggle', () => {
+        const user = this.shadow.querySelector('.user')
+        user.classList.toggle('active')
+      })
     }
 
     connectedCallback() {
+      this.loadData()
       this.render()
+    }
+
+    loadData() {
+      this.data = {
+        nombre: "Luis Prado",
+        rol: "Administrador"
+      }
     }
 
     render() {
@@ -18,20 +31,28 @@ export default (() => {
         .user{
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 15px;
-        padding: 0 15px;
+        padding: 0rem 15px;
         transition: opacity 0.3s ease;
-        background: var(--color-septimo);
-        border-radius: var(--radius-sm);
+        margin-top: 7.8rem;
+        margin-bottom: 0.5rem;
+        margin-left: auto;
+        background: #6B8AA7;
+        box-shadow: -10px -15px 20px 0px #495672ff;
+        border-right: 0px;
+        width: 200px;
       }
+
       .user:hover{
         opacity: 0.8;
         cursor: pointer;
       }
 
-      .user-active{
+      .user.active{
         flex-direction: row-reverse;
-        padding: 0 0px;
+        padding: 0 10px;
+        width: max-content;
       }
       
       .imagen-user{
@@ -79,21 +100,12 @@ export default (() => {
 					</svg>
 				</div>
 				<div class="name-user">
-					<h3>Luis Prado</h3>
-					<p>Administrador</p>
+					<h3>${this.data.nombre}</h3>
+					<p>${this.data.rol}</p>
 				</div>
 			</div>
 
       `
-	document.addEventListener('menu-toggle', () => {
-		const user = this.shadow.querySelector('.user')
-		user.classList.add('user-active')
-	})
-
-  document.addEventListener('menu-toggle-remove', () => {
-    const user = this.shadow.querySelector('.user')
-    user.classList.remove('user-active')
-  })
     }
 
   }

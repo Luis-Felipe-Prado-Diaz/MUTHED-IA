@@ -1,18 +1,18 @@
 export default (() => {
 
-  class Main extends HTMLElement {
+	class Main extends HTMLElement {
 
-    constructor() {
-      super()
-      this.shadow = this.attachShadow({ mode: 'open' })
-    }
+		constructor() {
+			super()
+			this.shadow = this.attachShadow({ mode: 'open' })
+		}
 
-    connectedCallback() {
-      this.render()
-    }
+		connectedCallback() {
+			this.render()
+		}
 
-    render() {
-      this.shadow.innerHTML =
+		render() {
+			this.shadow.innerHTML =
       /*html*/`
       <style>
 				 *{
@@ -49,21 +49,20 @@ export default (() => {
 					margin-left: 0;
 					display: none;
 				}
-
-	}
+			}
       </style>
 
 			<main>
-			<slot></slot>
-	</main>
+					<slot></slot>
+			</main>
 
       
   
       `
 
-    }
+		}
 
-  }
+	}
 
-  customElements.define('main-component', Main);
+	customElements.define('main-component', Main);
 })()

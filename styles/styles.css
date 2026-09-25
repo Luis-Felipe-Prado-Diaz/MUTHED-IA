@@ -6,13 +6,13 @@
 
 :root {
 	/* Colores originales del proyecto — no se renombran ni se añaden tonos nuevos */
-	--color-primario: #181818;
-	--color-secundario: #303030;
-	--color-terciario: #494949;
-	--color-cuaternario: #616161;
-	--color-quinario: #797979;
-	--color-sexto: #919191;
-	--color-septimo: #AAAAAA;
+	--color-primario: #0C0C2D;
+	--color-secundario: #000D1A;
+	--color-terciario: #00224D;
+	--color-cuaternario: #FE9C04;
+	--color-quinario: #FE9C04;
+	--color-sexto: #FE9C04;
+	--color-septimo: #FE9C04;
 	--color-texto-negro: black;
 	--color-texto-blanco: #ffffff;
 
@@ -71,11 +71,10 @@ textarea {
 }
 
 body {
-	background-color: var(--color-primario);
+	background-color: #6B8AA7;
 	color: var(--color-texto-blanco);
-	-webkit-font-smoothing: antialiased;
 	font-family: "Poppins", sans-serif;
-	-moz-osx-font-smoothing: grayscale;
+
 }
 
 /* Accesibilidad: foco visible y consistente en toda la app al navegar con teclado */

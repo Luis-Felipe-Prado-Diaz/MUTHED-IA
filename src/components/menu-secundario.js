@@ -5,7 +5,11 @@ export default (() => {
     constructor() {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
-      this.data= []
+      this.data = []
+      document.addEventListener('menu-toggle', () => {
+        const secundaryMenu = this.shadow.querySelector('.secundary-menu')
+        secundaryMenu.classList.toggle('active')
+      })
     }
 
     connectedCallback() {
@@ -13,7 +17,7 @@ export default (() => {
       this.render()
     }
 
-    loadData(){
+    loadData() {
       this.data = [
         {
           name: "Como funciona este codigo css",
@@ -25,7 +29,7 @@ export default (() => {
         },
         {
           name: "como funciona este codigo css",
-          url: "#"  
+          url: "#"
         },
         {
           name: "como funciona este codigo css",
@@ -84,33 +88,40 @@ export default (() => {
           box-sizing: border-box;
         }
         .secundary-menu{
-          background-color: var(--color-terciario);
           width: var(--sidebar-width);
-          padding: 0px 20px;
+          padding: 0px 10px 0px 10px;
           display: flex;
           flex-direction: column;
           transition: width var(--transition-base);
-         
         }
         .secundary-menu.active{
           display: none;  
         }
 
         .secundary-menu ul{
-          padding: 15px;
           list-style: none;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           height: 40vh;
-          overflow: hidden;
-          overflow-y: scroll;
+          padding-bottom: 40px;
+          padding-left: 5px;
+          text-align: left;
+          width: 100%;
+          overflow-y: auto;
+          direction: rtl;
+          scrollbar-width: thin; 
+          scrollbar-color: #6B8AA7 transparent;
+
         }
         .secundary-menu h3{
-          color: var(--color-texto-blanco);
+          color: white;
+          background: #6B8AA7;
+          padding: 5px;
+          margin: 5px 0px;
+          border-radius: 2px 2px 0 0;
           font-size: 1.5em;
           font-weight: 500;
-          margin-bottom: 20px;
         }
         .secundary-menu ul li{
           display: flex;
@@ -119,70 +130,73 @@ export default (() => {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          padding: 15px 10px;
+          padding: 20px 15px;
+          transition: all 0.5s ease;
+          direction: ltr;
+          text-align: left;
+          width: 100%;
+          
         }
+
         .secundary-menu ul li a{
-          color: var(--color-texto-blanco);
+          color: white;
           font-size: 1em;
           font-weight: 400;
           border-radius: var(--radius-sm);
           text-decoration: none;
           transition: background-color var(--transition-fast);
+          text-align: left;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%; 
         }
         .secundary-menu ul li:hover{
-          background-color: var(--color-primario);
+          background-color: #6B8AA7;
+          transform: translateX(5px);
+          transition: transform 0.5s ease;
         }
-
         .secundary-menu ul::-webkit-scrollbar{
-          width: 5px;
+          width: 10px;
           background: transparent;
+
         }
         .secundary-menu ul::-webkit-scrollbar-track{
           background: transparent;
         }
         .secundary-menu ul::-webkit-scrollbar-thumb{
-          background: var(--color-primario);
-
-
+          background: #6B8AA7;
+          border-radius: 5px;
         }
-        .secundary-menu ul:-webkit-scrollbar-thumb:hover{
-          background: var(--color-primario);
-        }
+  
 
       
       </style>
+
  			<nav class="secundary-menu" aria-label="Historial de chats">
 				<h3>Chats Recientes</h3>
 			</nav>
-
       `
-const nav = this.shadow.querySelector('.secundary-menu')
-const data = this.data
 
-const ul = document.createElement('ul')
-data.forEach(element => {
-  const li = document.createElement('li')
-  const a = document.createElement('a')
-  
-  a.href = element.url
-  a.textContent = element.name
-  
-  nav.appendChild(ul)
-  ul.appendChild(li)
-  li.appendChild(a)
-})
+      const nav = this.shadow.querySelector('.secundary-menu')
+      const data = this.data
+
+      const ul = document.createElement('ul')
+
+      data.forEach(element => {
+        const li = document.createElement('li')
+        const a = document.createElement('a')
+
+        a.href = element.url
+        a.textContent = element.name
+
+        nav.appendChild(ul)
+        ul.appendChild(li)
+        li.appendChild(a)
+      })
 
 
 
-	document.addEventListener('menu-toggle', () => {
-		const secundaryMenu = this.shadow.querySelector('.secundary-menu')
-		secundaryMenu.classList.add('active')
-	})
-
-  document.addEventListener('menu-toggle-remove', () => {
-    const secundaryMenu = this.shadow.querySelector('.secundary-menu')
-    secundaryMenu.classList.remove('active')
-  })
     }
 
   }
