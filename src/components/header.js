@@ -20,151 +20,151 @@ export default (() => {
           padding: 0;
           box-sizing: border-box;
         }
-          header{
-            background-color: #384959;
-            width: var(--sidebar-width);
-            display: flex;
-            justify-content:center;
-            flex-direction: column;
-            gap:40px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            max-height: 100vh;
-            height: 100vh;
-            z-index: 20;
-            transition: left var(--transition-base);
-          }
-          header.active{
-            left: -180px;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 20px;
-          }
-          header nav{
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           flex-direction: column;
-           margin-top: 20px;
-           width: var(--sidebar-width);
-           padding: 0px 10px;
-          }
+        header{
+          background-color: #384959;
+          width: var(--sidebar-width);
+          display: flex;
+          justify-content:center;
+          flex-direction: column;
+          gap:40px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          max-height: 100vh;
+          height: 100vh;
+          z-index: 20;
+          transition: left var(--transition-base);
+        }
+        header.active{
+          left: -180px;
+          justify-content: space-between;
+          align-items: flex-end;
+          gap: 20px;
+        }
+        header nav{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 20px;
+          width: var(--sidebar-width);
+          padding: 0px 10px;
+        }
 
-          header.active nav{
-            align-items: flex-end;
-            justify-content: flex-end;
+        header.active nav{
+          align-items: flex-end;
+          justify-content: flex-end;
+
+        }
+
+        header.active nav ul{
+          display: flex;
+          flex-direction: column-reverse;
+          justify-content: center;
+          transition: flex-direction var(--transition-fast);
+          transition-delay: var(--transition-fast);
+        }
+        header.active nav ul li{
+          justify-content: flex-end;
+          width: 100%;
+        }
+
+        header nav ul{
+          display: flex;
+          justify-content: space-between;
+          padding: 15px 0px;
+          border-radius: 10px;
+          transition: flex-direction var(--transition-fast);
+          transition-delay: var(--transition-fast);
+        }
+
+        header nav ul li{
+          padding: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        header nav ul li button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 2.8rem;
+          height: 2.8rem;
+          border-radius: 5px;
+          background-color: #6B8AA7;
+          border: none;
+          cursor: pointer;
+        }
+        header.active nav ul li button{
+          height: 2.8rem;
+          width: 2.8rem;
+        }
+        header nav ul li button svg{
+          width: 100%;
+          height: 100%;
+          fill: white;
+          transition: fill 0.3s ease;
+        }
+        header nav ul li button svg:hover{
+          fill: #0C0C2D;
+          transition: fill 0.3s ease;
+        }
+        header nav ul li button:hover{
+          fill: #0C0C2D;
+          transition: fill 0.3s ease;
+          transform: scale(1.1);
+          transition: transform 0.3s ease;
+        }
+        header nav ul li a{
+          text-decoration: none;
+          color: white;
+          font-size: 1em;
+          font-weight: 700;
+          padding: 10px;
+          border-radius: 5px;
+          background-color: #6B8AA7;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        header nav ul li a:hover{
+          color: #0C0C2D;
+          transition: background-color 0.3s ease;
+          transform: scale(1.1);
+        }
+        
+        header.active nav ul li a{
+          padding: 10px;
 
           }
+        header nav ul li .new-chat{
+          color: white;
+          font-size: 16px;
+          font-weight: 700;
+          width: max-content;
+          background: #6B8AA7;
+          padding: 0px 50px;
+          height: 50px;
+          gap: 5px;
+          cursor: pointer;
+        }
 
-          header.active nav ul{
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: center;
-            transition: flex-direction var(--transition-fast);
-            transition-delay: var(--transition-fast);
-          }
-          header.active nav ul li{
-            justify-content: flex-end;
-            width: 100%;
-          }
+        header.active nav ul li .new-chat{
+          font-size: 12px;
+          width: 2.8rem;
+          height: 2.8rem;
+          padding: 0px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
 
-          header nav ul{
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0px;
-            border-radius: 10px;
-            transition: flex-direction var(--transition-fast);
-            transition-delay: var(--transition-fast);
-          }
-
-          header nav ul li{
-            padding: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-          header nav ul li button{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.8rem;
-            height: 2.8rem;
-            border-radius: 5px;
-            background-color: #6B8AA7;
-            border: none;
-            cursor: pointer;
-          }
-          header.active nav ul li button{
-            height: 2.8rem;
-            width: 2.8rem;
-          }
-          header nav ul li button svg{
-            width: 100%;
-            height: 100%;
-            fill: white;
-            transition: fill 0.3s ease;
-          }
-          header nav ul li button svg:hover{
-            fill: #0C0C2D;
-            transition: fill 0.3s ease;
-          }
-          header nav ul li button:hover{
-            fill: #0C0C2D;
-            transition: fill 0.3s ease;
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-          }
-          header nav ul li a{
-            text-decoration: none;
-            color: white;
-            font-size: 1em;
-            font-weight: 700;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #6B8AA7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          header nav ul li a:hover{
-            color: #0C0C2D;
-            transition: background-color 0.3s ease;
-            transform: scale(1.1);
-          }
-          
-          header.active nav ul li a{
-            padding: 10px;
-
-           }
-          header nav ul li .new-chat{
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            width: max-content;
-            background: #6B8AA7;
-            padding: 0px 50px;
-            height: 50px;
-            gap: 5px;
-            cursor: pointer;
-          }
-
-          header.active nav ul li .new-chat{
-            font-size: 12px;
-            width: 2.8rem;
-            height: 2.8rem;
-            padding: 0px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-          }
-
-          header nav ul li .new-chat svg{
-            width: 100%;
-            height: 100%;
-            fill: white;
-          }
+        header nav ul li .new-chat svg{
+          width: 100%;
+          height: 100%;
+          fill: white;
+        }
       </style>
       <header>
         <nav>

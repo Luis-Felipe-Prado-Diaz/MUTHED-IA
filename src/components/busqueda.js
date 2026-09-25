@@ -29,6 +29,7 @@ export default (() => {
           font-weight: 400;
           font-family: 'Poppins', sans-serif;
           width: 100%;
+          color: black;
         }
 
         .caja-de-busqueda .input-container{

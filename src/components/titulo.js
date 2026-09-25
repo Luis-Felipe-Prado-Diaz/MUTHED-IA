@@ -30,7 +30,7 @@ export default (() => {
 
 				.texto .titulo h1 {
 					font-size: clamp(2.75rem, 5vw + 1rem, 7rem);
-					color:white;
+					color:black;
 					line-height: 0;
 					text-shadow: -8px -2px 3px rgba(0,0,0,0.69);
 					transition: transform 0.3s ease;
@@ -44,7 +44,7 @@ export default (() => {
 
 				 .texto .subtitulo p {
 					font-size: clamp(1.25rem, 1.5vw + 0.75rem, 2rem);
-					color: white;
+					color: black;
 					line-height: 0;
 					transition: transform 0.3s ease;
 				}

@@ -6,6 +6,7 @@ export default (() => {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
       this.data = []
+
       document.addEventListener('menu-toggle', () => {
         const secundaryMenu = this.shadow.querySelector('.secundary-menu')
         secundaryMenu.classList.toggle('active')
@@ -169,8 +170,6 @@ export default (() => {
           border-radius: 5px;
         }
   
-
-      
       </style>
 
  			<nav class="secundary-menu" aria-label="Historial de chats">
@@ -179,11 +178,10 @@ export default (() => {
       `
 
       const nav = this.shadow.querySelector('.secundary-menu')
-      const data = this.data
 
       const ul = document.createElement('ul')
-
-      data.forEach(element => {
+      
+      this.data.forEach(element => {
         const li = document.createElement('li')
         const a = document.createElement('a')
 
@@ -194,9 +192,6 @@ export default (() => {
         ul.appendChild(li)
         li.appendChild(a)
       })
-
-
-
     }
 
   }
