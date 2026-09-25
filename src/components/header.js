@@ -25,7 +25,8 @@ export default (() => {
             width: var(--sidebar-width);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            gap:100px;
             position: absolute;
             top: 0;
             left: 0;
@@ -39,16 +40,16 @@ export default (() => {
           }
           header nav{
            display: flex;
+           justify-content: center;
            flex-direction: column;
+
            width: var(--sidebar-width);
-           height: 100%;
            padding: 0px 10px;
           }
           header.active nav ul{
             display: flex;
             flex-direction: column-reverse;
-            height: 80%;
-            width: 100%;
+            justify-content: center;
             transition: flex-direction var(--transition-fast);
             transition-delay: var(--transition-fast);
           }
@@ -58,8 +59,8 @@ export default (() => {
           }
           header nav ul{
             display: flex;
-            justify-content: space-around;
-            padding: 20px 0px;
+            justify-content: space-between;
+            padding: 15px 0px;
             transition: flex-direction var(--transition-fast);
             transition-delay: var(--transition-fast);
           }
@@ -68,7 +69,6 @@ export default (() => {
             padding: 5px;
             display: flex;
             align-items: center;
-            justify-content: center;
           }
           header nav ul li button{
             display: flex;
@@ -76,7 +76,7 @@ export default (() => {
             justify-content: center;
             width: 2.8rem;
             height: 2.8rem;
-            background-color: var(--color-septimo);
+            border-radius: 50%;
           }
           header.active nav ul li button{
             height: 2.8rem;
@@ -91,6 +91,7 @@ export default (() => {
             color: black;
             font-size: 1em;
             font-weight: 700;
+            border-radius: 50%;
             padding: 10px;
             background-color: var(--color-septimo);
             display: flex;
@@ -179,6 +180,15 @@ export default (() => {
 
       toggleMenu.addEventListener("click", () => {
         menu.classList.toggle('active')
+        if(menu.classList.contains('active')){
+          document.dispatchEvent(new Event('menu-toggle'));
+          menu.classList.add('active')
+        }
+        else{
+          document.dispatchEvent(new Event('menu-toggle-remove'));
+          menu.classList.remove('active')
+        }
+        return
       })
     }
 

@@ -29,6 +29,10 @@ export default (() => {
           transition: width var(--transition-base);
          
         }
+        .secundary-menu.active{
+          display: none;  
+        }
+
         .secundary-menu ul{
           padding: 15px;
           list-style: none;
@@ -105,6 +109,15 @@ export default (() => {
 
       `
 
+	document.addEventListener('menu-toggle', () => {
+		const secundaryMenu = this.shadow.querySelector('.secundary-menu')
+		secundaryMenu.classList.add('active')
+	})
+
+  document.addEventListener('menu-toggle-remove', () => {
+    const secundaryMenu = this.shadow.querySelector('.secundary-menu')
+    secundaryMenu.classList.remove('active')
+  })
     }
 
   }
