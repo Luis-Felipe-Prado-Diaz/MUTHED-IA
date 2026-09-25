@@ -20,7 +20,6 @@ export default (() => {
         align-items: center;
         gap: 15px;
         padding: 0 15px;
-        height: 64px;
         transition: opacity 0.3s ease;
         background: var(--color-septimo);
         border-radius: var(--radius-sm);
