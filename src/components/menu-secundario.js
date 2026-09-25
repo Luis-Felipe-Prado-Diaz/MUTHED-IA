@@ -5,10 +5,73 @@ export default (() => {
     constructor() {
       super()
       this.shadow = this.attachShadow({ mode: 'open' })
+      this.data= []
     }
 
     connectedCallback() {
+      this.loadData()
       this.render()
+    }
+
+    loadData(){
+      this.data = [
+        {
+          name: "Como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "adaptar css grid a responsive",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"  
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+        {
+          name: "como funciona este codigo css",
+          url: "#"
+        },
+      ]
     }
 
     render() {
@@ -90,24 +153,26 @@ export default (() => {
       </style>
  			<nav class="secundary-menu" aria-label="Historial de chats">
 				<h3>Chats Recientes</h3>
-				<ul>
-					<li><a href="#">Como funciona este codigo css</a></li>
-					<li><a href="#">adaptar css grid a responsive</a></li>
-					<li><a href="#">cambiar resolucion externa</a></li>
-					<li><a href="#">imagen de fondo css</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-					<li><a href="#">valorar este ordenador</a></li>
-				</ul>
 			</nav>
 
       `
+const nav = this.shadow.querySelector('.secundary-menu')
+const data = this.data
+
+const ul = document.createElement('ul')
+data.forEach(element => {
+  const li = document.createElement('li')
+  const a = document.createElement('a')
+  
+  a.href = element.url
+  a.textContent = element.name
+  
+  nav.appendChild(ul)
+  ul.appendChild(li)
+  li.appendChild(a)
+})
+
+
 
 	document.addEventListener('menu-toggle', () => {
 		const secundaryMenu = this.shadow.querySelector('.secundary-menu')
