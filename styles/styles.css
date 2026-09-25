@@ -74,6 +74,7 @@ body {
 	background-color: var(--color-primario);
 	color: var(--color-texto-blanco);
 	-webkit-font-smoothing: antialiased;
+	font-family: "Poppins", sans-serif;
 	-moz-osx-font-smoothing: grayscale;
 }
 
