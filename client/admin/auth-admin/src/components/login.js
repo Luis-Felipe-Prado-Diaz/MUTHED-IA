@@ -168,7 +168,6 @@
             h1.textContent = value
           }
         })
-
       })  
 
       const form =this.shadow.querySelector("form")
