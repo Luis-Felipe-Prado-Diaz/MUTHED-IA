@@ -80,7 +80,6 @@ export default (() => {
           padding: 0.5rem;
           width: 100%;
           max-height: 200px;
-          field-sizing: content;
         }
 
         .caja-de-busqueda .input-container textarea::placeholder {
@@ -101,23 +100,22 @@ export default (() => {
               d="M16.5,6V17.5A4,4 0 0,1 12.5,21.5A4,4 0 0,1 8.5,17.5V5A2.5,2.5 0 0,1 11,2.5A2.5,2.5 0 0,1 13.5,5V15.5A1,1 0 0,1 12.5,16.5A1,1 0 0,1 11.5,15.5V6H10V15.5A2.5,2.5 0 0,0 12.5,18A2.5,2.5 0 0,0 15,15.5V5A4,4 0 0,0 11,1A4,4 0 0,0 7,5V17.5A5.5,5.5 0 0,0 12.5,23A5.5,5.5 0 0,0 18,17.5V6H16.5Z" />
           </svg>
           <textarea id="busqueda" placeholder="Pregunta lo que quieras" rows="1"></textarea>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-action="enviar" aria-hidden="true" focusable="false" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-action="enviar" aria-hidden="true" focusable="false" type="submit" name = "enviar">
             <path d="M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22M12,7L7,12H10V16H14V12H17L12,7Z" />
           </svg>
         </div>
       </form>
       `
+       this.shadow.querySelector('.caja-de-busqueda').addEventListener('click', async event => {
+      event.preventDefault()
 
-      const sendButton = this.shadow.querySelector("svg[data-action='enviar']")
-      const form = this.shadow.querySelector("form")
-
-      sendButton.addEventListener("click", async event => {
+      if(event.target.closest('[data-action="enviar"]')){
+        const form = this.shadow.querySelector('.caja-de-busqueda')
+        const formData = new FormData(form)
+        const formDataJson = Object.fromEntries(formData.entries())
 
         try {
-          const formData = new FormData(form)
-          const formDataJson = Object.fromEntries(formData.entries())
-
-          const response = await fetch('http://localhost:8080/admin/login', {
+          const result = await fetch(`${import.meta.env.VITE_API_URL}/api/worker/chats`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -125,19 +123,52 @@ export default (() => {
             body: JSON.stringify(formDataJson)
           })
 
-          const json = await response.json()
-
-          document.dispatchEvent(new CustomEvent('respuestadellamado', {
-            detail: {
-              text: 'Formulario enviado correctamente',
-              type: 'success',
-              data: json
-            }
-          }))
+          if (result.ok) {
+            form.reset()
+            const data = await result.json()
+            console.log(data.response)
+          } 
         } catch (error) {
           console.log(error)
         }
-      })
+
+      }
+    })
+
+
+
+
+
+      // const sendButton = this.shadow.querySelector("svg[data-action='enviar']")
+      // const form = this.shadow.querySelector("form")
+
+      // sendButton.addEventListener("click", async event => {
+        
+      //   try {
+      //     const formData = new FormData(form)
+      //     const formDataJson = Object.fromEntries(formData.entries())
+
+      //     const response = await fetch('http://localhost:8080/admin/login', {
+      //       method: 'POST',
+      //       headers: {
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify(formDataJson)
+      //     })
+
+      //     const json = await response.json()
+
+      //     document.dispatchEvent(new CustomEvent('respuestadellamado', {
+      //       detail: {
+      //         text: 'Formulario enviado correctamente',
+      //         type: 'success',
+      //         data: json
+      //       }
+      //     }))
+      //   } catch (error) {
+      //     console.log(error)
+      //   }
+      // })
     }
 
   }
